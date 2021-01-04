@@ -1,20 +1,22 @@
 package com.lenho.learning.controller;
 
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.tomcat.util.json.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import sun.misc.BASE64Encoder;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Enumeration;
+import java.util.Map;
 
 /**
  * @author langyonghe
@@ -23,21 +25,44 @@ import java.util.Enumeration;
 @RestController
 @RequestMapping("/learn")
 public class TestController {
+    private static Logger log = LoggerFactory.getLogger(TestController.class);
 
-
-    @ResponseBody
-    @PostMapping("/test")
-    public String test(@RequestBody String param) throws Exception {
-        JSONObject jsonObject = JSONObject.parseObject(param);
+    @PostMapping("/post")
+    public String test( @RequestBody Map<String, String> parameters) throws Exception {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        String userId = request.getParameter("userId");
+        System.out.println(userId);
         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()){
             String s = headerNames.nextElement();
             String value = request.getHeader(s);
             System.out.println(s + " : "+ value);
         }
-        System.out.println(param);
-        return param;
+        System.out.println(parameters);
+        return "12";
+    }
+
+    @RequestMapping("/first")
+    public ModelAndView showEmp(){
+        ModelAndView mav=new ModelAndView("/stack");
+        return mav;
+    }
+
+    @GetMapping("/get")
+    public String testGet(@RequestParam("param") String param) throws Exception {
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        String userId = request.getParameter("userId");
+        System.out.println(userId);
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()){
+            String s = headerNames.nextElement();
+            String value = request.getHeader(s);
+            System.out.println(s + " : "+ value);
+        }
+        System.out.println(234);
+        System.gc();
+
+        return "sfggs";
     }
 
     public String EncodeByMD5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {
@@ -60,7 +85,7 @@ public class TestController {
         }
     }
 
-    public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
         MessageDigest md5 = MessageDigest.getInstance("MD5");
         byte[] digest = md5.digest("password1234".getBytes("utf-8"));
         BASE64Encoder base64en = new BASE64Encoder();
