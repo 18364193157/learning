@@ -23,9 +23,16 @@
         div.hide {
             display:none;
         }
+        #down {
+            cursor: pointer;
+        }
     </style>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
     <script src="../js/jquery-3.4.1.js"></script>
     <script src="../js/index.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+
 </head>
 <body>
 <!--    <div class="one" id="one" >-->
@@ -59,14 +66,45 @@
 <!--    </div>-->
 <!--    <span id="mover">正 在执行动画的span元素. </span>-->
 
-    <div id="panel">
-        <h5 class="head">什么是jquery</h5>
-        <div class="content"  >
-            请自行百度
-        </div>
-        <div class="javaContent">
-            请自行google
-        </div>
-    </div>
+<!--    <div id="panel">-->
+<!--        <h5 class="head">什么是jquery</h5>-->
+<!--        <div class="content"  >-->
+<!--            请自行百度-->
+<!--        </div>-->
+<!--        <div class="javaContent">-->
+<!--            请自行google-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <a id="down">鼠标测试</a>-->
+
+<!--<span>============================================</span>-->
+<!--<input type="button" value="删除" id="btn" />-->
+
+
+<div id="dialog" title="Basic dialog">
+    <p>这是一个动画显示的对话框，用于显示信息。对话框窗口可以移动，调整尺寸，默认可通过 'x' 图标关闭。</p>
+</div>
+
+<button id="opener">打开对话框</button></div>
+
 </body>
+<script type="text/javascript">
+    $(function () {
+        $( "#dialog" ).dialog({
+            autoOpen: false,
+            show: {
+                effect: "blind",
+                duration: 1000
+            },
+            hide: {
+                effect: "explode",
+                duration: 1000
+            }
+        });
+
+        $( "#opener" ).click(function() {
+            $( "#dialog" ).dialog( "open" );
+        });
+    })
+</script>
 </html>
