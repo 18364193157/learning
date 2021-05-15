@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +22,9 @@ public class LenhoController {
 
 
     @GetMapping("/test/many")
-    public String testMany(){
+    public String testMany(HttpServletRequest request){
+        System.out.println(request.getHeader("X-Real-IP"));
+        System.out.println(request.getHeader("X-Forwarded-For"));
         return "testmany";
     }
 
@@ -67,4 +70,8 @@ public class LenhoController {
         }
         return "success";
     }
+
+
+
+
 }
