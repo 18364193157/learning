@@ -13,12 +13,12 @@
     <version>1.0.0-SNAPSHOT</version>
     <name>learning</name>
     <description>learning-description</description>
-<!--    <packaging>war</packaging>-->
-<!--
-    只要指定 java.version 就等同于指定了maven.compiler.target、maven.compiler.source
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
--->
+    <!--    <packaging>war</packaging>-->
+    <!--
+        只要指定 java.version 就等同于指定了maven.compiler.target、maven.compiler.source
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+    -->
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -34,6 +34,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
         <!--jsp页面使用jstl标签-->
         <dependency>
@@ -47,7 +51,6 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
-
 
 
         <dependency>
@@ -71,10 +74,10 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <optional>true</optional>
-    </dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -116,12 +119,12 @@
             <version>0.1.9</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.projectlombok</groupId>-->
-<!--            <artifactId>lombok</artifactId>-->
-<!--            <version>1.18.12</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.projectlombok</groupId>-->
+        <!--            <artifactId>lombok</artifactId>-->
+        <!--            <version>1.18.12</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
@@ -131,7 +134,20 @@
         </dependency>
 
 
-
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
@@ -140,26 +156,26 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-war-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-war-plugin</artifactId>-->
+            <!--                <version>3.0.0</version>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 
     <repositories>
-<!--        <repository>-->
-<!--            <id>alimaven</id>-->
-<!--            <name>aliyun maven</name>-->
-<!--            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
-<!--            <releases>-->
-<!--                <enabled>true</enabled>-->
-<!--            </releases>-->
-<!--            <snapshots>-->
-<!--                <enabled>false</enabled>-->
-<!--            </snapshots>-->
-<!--        </repository>-->
+        <!--        <repository>-->
+        <!--            <id>alimaven</id>-->
+        <!--            <name>aliyun maven</name>-->
+        <!--            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+        <!--            <releases>-->
+        <!--                <enabled>true</enabled>-->
+        <!--            </releases>-->
+        <!--            <snapshots>-->
+        <!--                <enabled>false</enabled>-->
+        <!--            </snapshots>-->
+        <!--        </repository>-->
         <repository>
             <id>cloudera</id>
             <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>

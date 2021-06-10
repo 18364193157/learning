@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+/**
+ * @author langyonghe
+ */
 @SpringBootApplication
 public class LearningApplication extends SpringBootServletInitializer {
 
